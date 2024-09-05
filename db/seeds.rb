@@ -1,9 +1,21 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# db/seeds.rb
+Restaurant.create!([
+  { name: 'Epicure', address: '75008 Paris', phone_number: '1234567890', category: 'french' },
+  { name: 'Sushi Samba', address: 'London', phone_number: '2345678901', category: 'japanese' },
+  { name: 'La Piazza', address: 'Rome', phone_number: '3456789012', category: 'italian' },
+  { name: 'Great Wall', address: 'Beijing', phone_number: '4567890123', category: 'chinese' },
+  { name: 'Brussels Bistro', address: 'Brussels', phone_number: '5678901234', category: 'belgian' }
+])
+
+# Adding reviews with ratings within the new limit
+epicure = Restaurant.find_by(name: 'Epicure')
+epicure.reviews.create!(content: 'Amazing food!', rating: 8)
+epicure.reviews.create!(content: 'Great atmosphere!', rating: 9)
+
+sushi_samba = Restaurant.find_by(name: 'Sushi Samba')
+sushi_samba.reviews.create!(content: 'Delicious sushi.', rating: 7)
+sushi_samba.reviews.create!(content: 'Nice service.', rating: 6)
+
+la_piazza = Restaurant.find_by(name: 'La Piazza')
+la_piazza.reviews.create!(content: 'Best pizza in town!', rating: 10)
+la_piazza.reviews.create!(content: 'Loved the pasta.', rating: 9)

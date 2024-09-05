@@ -1,0 +1,18 @@
+<!-- app/views/restaurants/show.html.erb -->
+<h1 class="my-4"><%= @restaurant.name %></h1>
+<p><strong>Address:</strong> <%= @restaurant.address %></p>
+<p><strong>Phone Number:</strong> <%= @restaurant.phone_number %></p>
+<p><strong>Category:</strong> <%= @restaurant.category %></p>
+
+<%= link_to 'Back to Restaurant List', restaurants_path, class: 'btn btn-secondary mb-3' %>
+
+<h2 class="my-4">Reviews</h2>
+<%= render 'reviews/form', restaurant: @restaurant, review: @review %>
+<ul class="list-group review">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">
+      <strong>Rating:</strong> <%= review.rating %>/10 <br>
+      <%= review.content %>
+    </li>
+  <% end %>
+</ul>

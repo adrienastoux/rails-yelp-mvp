@@ -57,6 +57,9 @@ group :development do
   # gem "spring"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+
+  gem "simple_form"
+
 end
 
 gem 'rspec-rails', group: [ :test ]
